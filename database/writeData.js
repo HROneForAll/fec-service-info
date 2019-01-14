@@ -2,7 +2,7 @@ const fs = require('fs');
 
 
 var sampleData = [];
-for (var i = 1; i < 101; i++) {
+for (var i = 1; i < 11; i++) {
   sampleData.push({
     id: i,
     amenities: {

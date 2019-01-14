@@ -16,10 +16,17 @@
     "start": "nodemon ./server/server.js",
     "test-server": "node ./node_modules/mocha/bin/mocha",
     "test-client": "jest",
-    "docker": "node ./database/seed.js && node ./server/server.js"
+    "docker": "node ./database/seed.js && node ./server/server.js",
+    "generateData": "node ./database/dataGenerator.js",
+    "schemaPostgres": "psql -d ROOMSAMENITIES -a -f database/schema.sql",
+    "saveDataPostgres": "node ./database/dataSaver.js",
+    "schemaCassandra": "cqlsh -f database/schema.cql",
+    "saveDataCassandra": "./database/loopDataSaver.sh",
+    "setUpDb": "npm run generateData && npm run schemaPostgres && npm run saveDataPostgres && npm run schemaCassandra && npm run saveDataCassandra"
   },
   "dependencies": {
     "bluebird": "^3.5.3",
+    "cassandra-driver": "^4.0.0",
     "eslint": "^5.10.0",
     "express-partials": "^0.3.0",
     "express-react-views": "^0.11.0",
@@ -28,10 +35,13 @@
     "mongoose": "^5.4.0",
     "node-mocks-http": "^1.7.3",
     "nodemon": "^1.18.9",
+    "pg": "^7.7.1",
     "pug": "^2.0.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "sequelize": "^4.42.0",
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -42,6 +52,7 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "chai": "^4.2.0",
@@ -50,6 +61,7 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "faker": "^4.1.0",
     "jest": "^23.6.0",
     "mocha": "^5.2.0",
     "react-test-renderer": "^16.7.0",
