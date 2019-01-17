@@ -42,4 +42,36 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+## CRUD Operations
 
+Observations:
+1. `Body` represents the data sent inside the body of the request object.
+2. Even if the output is `none`, a message is sent back to the client in the `response` object, warning him of the success/failure of the operation.
+
+### CREATE
+* HTTP method: POST;
+* Endpoint: `/rooms`;
+* Parameters: none;
+* Body: object (keys are amenities and values are booleans, indicating whether the room has the amenity)
+* Output: none.
+
+### READ (one room)
+* HTTP method: GET;
+* Endpoint: `/rooms/:roomId`
+* Parameters: `roomId`
+* Body: none
+* Output: rooms amenity object (same structure as the object described above).
+
+### UPDATE
+* HTTP method: PATCH;
+* Endpoint: `/rooms/:roomId`;
+* Parameters: `roomId`;
+* Body: array (of properties whose boolean value should be reversed);
+* Output: none.
+
+### DELETE
+* HTTP method: DELETE;
+* Endpoint: `/rooms/:roomId`;
+* Parameters: `roomId`;
+* Body: none;
+* Output: none.

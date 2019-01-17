@@ -17,7 +17,7 @@ const imagesList = (props) => {
           <p style={styles.presentTextHeader}>This home has these unique amenities</p>
           {Object.keys(props.special).map((amenity) => (
             props.special[amenity]
-              ? <div style={styles.modalEntry}>
+              ? <div key={amenity} style={styles.modalEntry}>
                 <p style={styles.presentText}>{amenity}</p>
                 <img name={amenity} src={props.images[amenity]} style={styles.presentImage}></img>
               </div> 
@@ -27,7 +27,7 @@ const imagesList = (props) => {
           <p style={styles.presentTextHeader}>This Airbnb Plus home comes with these amenities</p>
           {Object.keys(props.essential).map((amenity) => (
             props.essential[amenity] 
-              ? <div style={styles.modalEntry}>
+              ? <div key={amenity} style={styles.modalEntry}>
                 <p style={styles.presentText}>{amenity}</p>
                 <img name={amenity} src={props.images[amenity]} style={styles.presentImage}></img>
               </div> 
@@ -38,7 +38,7 @@ const imagesList = (props) => {
           {Object.keys(props.special).map((amenity) => (
             props.special[amenity] 
               ? null 
-              : <div style={styles.modalEntry}>
+              : <div key={amenity} style={styles.modalEntry}>
                 <p style={styles.notPresentText}>{amenity}</p>
                 <img name={amenity} src={props.images[amenity]} style={styles.notPresentImage}></img>
               </div>
@@ -46,7 +46,7 @@ const imagesList = (props) => {
           {Object.keys(props.essential).map((amenity) => (
             props.essential[amenity] 
               ? null 
-              : <div style={styles.modalEntry}>
+              : <div key={amenity} style={styles.modalEntry}>
                 <p style={styles.notPresentText}>{amenity}</p>
                 <img name={amenity} src={props.images[amenity]} style={styles.notPresentImage}></img>
               </div>
